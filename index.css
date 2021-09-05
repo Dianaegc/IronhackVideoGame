@@ -1,6 +1,48 @@
+    body{
+    background:url(/IronhackVideoGame/recursos/Pandemic.jpg);
+    background-size: cover;
+  }
 
-  #canvas {
-    text-align: center;
-    border: 1px solid black
+  .btn{
+    display:block;
+    width: 100px;
+    height: 100px;
+    outline:none;
+    background-color:transparent;
+    border-color:black;
+    border: 3px solid transparent;
+    border-radius:100px;
+    color:black;
+    cursor:pointer;
+    margin:288px auto 0 auto;
+    text-align:center;
+    text-transform:inherit;
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-size: 17px;
+    position:relative;
+    
+  }
+
+a{
+  color:black;
+  text-decoration: none;
+
+}
+
+    a:hover{
+    border:1px solid transparent;
+    color:white
   }
   
+
+  p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding-top: 200px;
+    padding-left: 30px;
+    color: rgba(0, 0, 0, 0.363);
+    
+   
+  }
+
+ 
