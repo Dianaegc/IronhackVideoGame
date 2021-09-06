@@ -14,10 +14,10 @@
     border-radius:100px;
     color:black;
     cursor:pointer;
-    margin:288px auto 0 auto;
+    margin:185px auto 0 auto;
     text-align:center;
     text-transform:inherit;
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-family: Georgia, Times, Times New Roman, serif;
     font-size: 17px;
     position:relative;
     
@@ -39,15 +39,24 @@ a{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     padding-top: 200px;
-    padding-left: 30px;
+    padding-left: 40px;
     color: rgba(0, 0, 0, 0.363);
+
     
    
   }
+ h4{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size:15px;
+   font-weight: normal;
+   color: rgba(0, 0, 0, 0.363);
+   padding-top:0px ;
+   padding-left: 30px;
+   color: rgba(0, 0, 0, 0.363);
+
+ }
 #audio{
   width:10%;
   height:20px;
-  margin:288px auto 0 auto;
-
-
+  margin:260px auto 0 auto;
 }
