@@ -1,8 +1,8 @@
 const $canvas=document.querySelector("canvas")
 const ctx=$canvas.getContext("2d");
 let getInterval;
-$canvas.width=canvas.width
-$canvas.height=canvas.height
+$canvas.width=window.innerWidth/2;
+$canvas.height=window.innerHeight;
 
 
 //Class Background
@@ -23,7 +23,7 @@ class Road{
 //Class Avatar
 class Avatar{
     constructor(){
-        
+
     }
 }
 //Instancias

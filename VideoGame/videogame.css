@@ -9,31 +9,42 @@
       height:15px;
   }
 
+  #padre{
+      display: flex;
+      flex-direction: row;
+  }
+  #padre-izquierdo{
+      display: flex;
+      flex-direction: column;
+      justify-content:flex-start;
+
+  }
+  #flechas{
+      display: flex;
+      justify-content: space-between;
+        margin-top: 3cm;
+        
+  }
+
 .game-intro{
     float:left;
     padding: 0% 10%;
 }
 
-.logo-img{
+#logo-img{
     width: 480px;
     display: block;
-    margin: auto;
     justify-items:center;
 }
-.awsd-img{
-    margin: 100px;
+.arrows-img{
+    width: 220px;
+    height: 220px;
+    
 }
 
-#game-logo{
-    height:0px;
-    width:0px;
-    align-items: center;
+#instrucciones{
+  padding-top: 100px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-
-#game-board{
-    width: 20%;
-    height: 15px;
-    margin-left:900px;
-}
 

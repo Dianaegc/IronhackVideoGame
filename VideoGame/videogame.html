@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./videogame.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./videogame.css" />
     <title>RUN-VID</title>
-</head>
-<body>
-    <div class="game-intro"> </div>
-    <div id="game-logo">
-        <img src="/IronhackVideoGame/recursos/logo.png" alt="" class="logo-img">
-        <br>
-        <img src="/IronhackVideoGame/recursos/awsd.png" alt="" class="awsd-img">
-        
+  </head>
+  <body>
+      <div id="padre">
+    <div id="padre-izquierdo" class="game-intro">
+      <div id="game-logo">
+        <img
+          src="/IronhackVideoGame/recursos/logo.png"
+          alt=""
+          id="logo-img"
+        />
+      </div>
+      <div id="flechas">
+        <div>
+          <img
+            src="/IronhackVideoGame/recursos/awsd.png"
+            alt=""
+            class="arrows-img"
+          />
+        </div>
+        <div>
+          <img
+            src="/IronhackVideoGame/recursos/flechas.png"
+            alt=""
+            class="arrows-img"
+          />
+        </div>
+      </div>
+      <div id="instrucciones"> 
+        <div>
+            <h3>Instructions:</h3>
+        </div>
+        <div>
+             <p> Player one must use the WASD keys to move. <br>
+                Player two  must use the regular keys of the keyboard.</p>
+        </div>
     </div>
+    </div>
+
+
     <div id="game-board">
-        <canvas id="canvas" width="700" height="900"></canvas>
-        <script type="text/javascript"src="./videogame.js"></script>
+      <canvas id="canvas"></canvas>
+      <script type="text/javascript" src="./videogame.js"></script>
     </div>
-    
-</body>
+</div> 
+  </body>
 </html>
-
-
-
