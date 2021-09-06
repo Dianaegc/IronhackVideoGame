@@ -13,7 +13,7 @@ class Road{
         this.width=$canvas.width;
         this.height=$canvas.height;
         this.img=new Image();
-        this.img.src="/IronhackVideoGame/recursos/carretera.png"
+        this.img.src="../recursos/carretera.png"
     }
     //Método
     draw(){
@@ -22,23 +22,39 @@ class Road{
 }
 //Class Avatar
 class Avatar{
-    constructor(){
+    constructor(imagenes,x,y){ // donde saco mis imagenes 
+        this.x=x;
+        this.y=y;
+        this.width=80;
+        this.height=80;
+        this.img = new Image();
+        this.img.src = imagenes;
 
     }
+    //metodo de avatar
+    draw(){
+        ctx.drawImage(this.img,this.x,this.y,this.width,this.height);
+    }
+
 }
 //Instancias
 const road=new Road();
+const avatar1= new Avatar("../recursos/AvatarChica.png",250,800);
+const avatar2=new Avatar("../recursos/chico.png",450,800);
 
 //event listeners 
-window.onload=()=>{
+window.onload=()=>{ // cuando carga la ventana 
     startGame();
-    background.draw();
+
 
 };
 
 //motor del juego
 function updateGame(){
-    road.draw()
+    clearCanvas(); 
+    road.draw();
+    avatar1.draw();
+    avatar2.draw();
 }
 function startGame(){
     gameInterval=setInterval(updateGame,1000/60)
