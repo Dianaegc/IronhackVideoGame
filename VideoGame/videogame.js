@@ -5,7 +5,7 @@ $canvas.width = window.innerWidth / 2;
 $canvas.height = window.innerHeight;
 let frames = 0;
 const covids = [];
-const covids2=[];
+const covids2 = [];
 let score = 0;
 let score2 = 0;
 
@@ -27,7 +27,8 @@ class Road {
 }
 
 //Class Avatar
-class Avatar { // una sola clase para los dos avatars
+class Avatar {
+  // una sola clase para los dos avatars
   constructor(imagenes, x, y) {
     // donde saco mis imagenes
     this.x = x;
@@ -100,7 +101,11 @@ class Covid {
 }
 //Instancias
 const road = new Road();
-const avatar1 = new Avatar( "../recursos/AvatarChica.png",250,$canvas.height - 80);
+const avatar1 = new Avatar(
+  "../recursos/AvatarChica.png",
+  250,
+  $canvas.height - 80
+);
 const avatar2 = new Avatar("../recursos/chico.png", 450, $canvas.height - 80);
 const covid = new Covid();
 
@@ -112,7 +117,7 @@ window.onload = () => {
 //listener de presion de teclas
 document.onkeydown = (event) => {
   switch (event.keyCode) {
-    case 38: 
+    case 38:
       avatar2.moveUp();
       break;
     case 40:
@@ -121,12 +126,14 @@ document.onkeydown = (event) => {
       }
       break;
     case 37:
-        if(avatar2.x>400){
-      avatar2.moveLeft();
-        }break;
-    case 39:
+      if (avatar2.x > 400) {
+        avatar2.moveLeft();
+      }
+      break;
+    case 39: 
+    if(avatar2.x < 540){
       avatar2.moveRight();
-    break;
+    }break;
     case 87:
       avatar1.moveUp(); //W
       break;
@@ -137,15 +144,19 @@ document.onkeydown = (event) => {
       }
       break;
     case 65:
+        if(avatar1.x>197){
       avatar1.moveLeft(); //A
-      break;
+    }break;
     case 68:
-        if(avatar1.x <300){ // para que no pase a la parte del jugador 2
-      avatar1.moveRight(); //D
-        }break;
+      if (avatar1.x < 300) {
+        // para que no pase a la parte del jugador 2
+        avatar1.moveRight(); //D
+      }
+      break;
     default:
   }
 };
+
 
 //motor del juego
 function updateGame() {
@@ -173,12 +184,13 @@ function updateCovids() {
     covids2[i].draw();
   }
   frames += 1;
-  if (frames % 80 === 0) {
+  if (frames % 50 === 0) {
     let x = Math.floor(Math.random() * ($canvas.width + 1));
     let y = Math.floor(Math.random() * ($canvas.height + 1));
     covids.push(new Covid(800, y));
-    covids2.push(new Covid(0,y));
+    covids2.push(new Covid(0, y));
   }
+  
 }
 //score
 function drawScore() {
@@ -190,4 +202,11 @@ function drawScore2() {
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
   ctx.fillText("Dose: " + score2, 730, 20);
+}
+
+//checkgameover
+function checkGameOver(){
+    const choque=myCovids.some((covids)=>{
+        return avatar1.c
+    })
 }
