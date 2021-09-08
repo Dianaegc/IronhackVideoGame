@@ -19,7 +19,7 @@
     text-transform:inherit;
     font-family: Georgia, Times, Times New Roman, serif;
     font-size: 17px;
-    position:relative;
+    position:sticky;
     
   }
 
@@ -55,8 +55,8 @@ a{
    color: rgba(0, 0, 0, 0.363);
 
  }
-#audio{
-  width:10%;
-  height:20px;
-  margin:260px auto 0 auto;
-}
+ 
+ #audio-music{
+  width: 10%;
+  height:15px;
+ }

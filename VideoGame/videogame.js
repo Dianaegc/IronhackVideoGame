@@ -98,14 +98,11 @@ class Covid {
   bottom() {
     return this.y + this.height;
   }
-
   crashWith(obstacle) {
     return !(this.bottom() < obstacle.top() || this.top() > obstacle.bottom() || this.right() < obstacle.left() || this.left() > obstacle.right());
   }
-
-
-
 }
+
 //Instancias
 const road = new Road();
 const avatar1 = new Avatar("../recursos/AvatarChica.png",$canvas.width*.30,$canvas.height - 80);
@@ -150,12 +147,11 @@ document.onkeydown = (event) => {
       }
       break;
     case 65:
-        if(avatar1.x>canvas.width*.23){
+        if(avatar1.x>canvas.width*.23){// porcentaje del ancho del canvas (siendo  canvas  width el 100% del ancho ) para que no se muevan los avatars .
       avatar1.moveLeft(); //A
     }break;
     case 68:
-      if (avatar1.x <canvas.width*.40) {
-        // para que no pase a la parte del jugador 2
+      if (avatar1.x <canvas.width*.40) {    // para que no pase a la parte del jugador 2
         avatar1.moveRight(); //D
       }
       break;
@@ -189,10 +185,7 @@ function updateCovids() {
     covids[i].draw();
     covids2[i].x++;
     covids2[i].draw();
-    covids[i].crashWith(avatar1);//checar si los covids de lado derecho chocan con el avatar 1
-    covids[i].crashWith(avatar2);//checar si los covids de lado izq chocan con el avatar 2 
-    covids2[i].crashWith(avatar1);
-    covids2[i].crashWith(avatar2);
+
   }
   frames += 1;
   if (frames % 50 === 0) {
@@ -203,7 +196,7 @@ function updateCovids() {
   }
   
 }
-//score
+//score -dose
 function drawScore() {
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
