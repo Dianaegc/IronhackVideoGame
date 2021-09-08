@@ -1,4 +1,8 @@
-    body{
+::-webkit-scrollbar{
+  display: none;
+}
+  
+  body{
     background:url(./recursos/Pandemic.jpg);
     background-size: cover;
   }
