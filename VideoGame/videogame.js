@@ -79,7 +79,7 @@ class Covid {
     this.x = x;
     this.y = y;
     this.img = new Image();
-    this.img.src = "../recursos/covid (1).png";
+    this.img.src = "../recursos/covid.png";
   }
   //metodo covid
   draw() {
@@ -166,6 +166,7 @@ function updateGame() {
   avatar2.draw();
   covid.draw();
   updateCovids();
+
   drawScore();
   drawScore2();
 }
@@ -201,7 +202,7 @@ function drawScore() {
 function drawScore2() {
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
-  ctx.fillText("Dose: " + score2, 730, 20);
+  ctx.fillText("Dose: " + score2, 700, 20);
 }
 
 //checkgameover
@@ -210,3 +211,4 @@ function checkGameOver(){
         return avatar1.c
     })
 }
+
