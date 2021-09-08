@@ -9,7 +9,6 @@ const covids2 = [];
 let score = 0;
 let score2 = 0;
 
-console.log(canvas.width);
 //Class Background
 class Road {
   constructor() {
@@ -38,6 +37,7 @@ class Avatar {
     this.speed = 20;
     this.img = new Image();
     this.img.src = imagenes;
+    this.puntaje=0;
   }
   //metodo de avatar
   draw() {
@@ -98,15 +98,18 @@ class Covid {
   bottom() {
     return this.y + this.height;
   }
+
+  crashWith(obstacle) {
+    return !(this.bottom() < obstacle.top() || this.top() > obstacle.bottom() || this.right() < obstacle.left() || this.left() > obstacle.right());
+  }
+
+
+
 }
 //Instancias
 const road = new Road();
-const avatar1 = new Avatar(
-  "../recursos/AvatarChica.png",
-  250,
-  $canvas.height - 80
-);
-const avatar2 = new Avatar("../recursos/chico.png", 450, $canvas.height - 80);
+const avatar1 = new Avatar("../recursos/AvatarChica.png",$canvas.width*.30,$canvas.height - 80);
+const avatar2 = new Avatar("../recursos/chico.png",$canvas.width*.60, $canvas.height - 80);
 const covid = new Covid();
 
 //event listeners
@@ -126,16 +129,19 @@ document.onkeydown = (event) => {
       }
       break;
     case 37:
-      if (avatar2.x > 400) {
+      if (avatar2.x > canvas.width*.50) {
         avatar2.moveLeft();
       }
       break;
     case 39: 
-    if(avatar2.x < 540){
+    if(avatar2.x < canvas.width*.67){
       avatar2.moveRight();
     }break;
     case 87:
       avatar1.moveUp(); //W
+      if(avatar1.y==0){
+        
+      }
       break;
     case 83:
       console.log(avatar1.y);
@@ -144,11 +150,11 @@ document.onkeydown = (event) => {
       }
       break;
     case 65:
-        if(avatar1.x>197){
+        if(avatar1.x>canvas.width*.23){
       avatar1.moveLeft(); //A
     }break;
     case 68:
-      if (avatar1.x < 300) {
+      if (avatar1.x <canvas.width*.40) {
         // para que no pase a la parte del jugador 2
         avatar1.moveRight(); //D
       }
@@ -183,6 +189,10 @@ function updateCovids() {
     covids[i].draw();
     covids2[i].x++;
     covids2[i].draw();
+    covids[i].crashWith(avatar1);//checar si los covids de lado derecho chocan con el avatar 1
+    covids[i].crashWith(avatar2);//checar si los covids de lado izq chocan con el avatar 2 
+    covids2[i].crashWith(avatar1);
+    covids2[i].crashWith(avatar2);
   }
   frames += 1;
   if (frames % 50 === 0) {
@@ -202,13 +212,9 @@ function drawScore() {
 function drawScore2() {
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
-  ctx.fillText("Dose: " + score2, 700, 20);
+  ctx.fillText("Dose: " + score2,$canvas.width*.90, 20);
 }
 
-//checkgameover
-function checkGameOver(){
-    const choque=myCovids.some((covids)=>{
-        return avatar1.c
-    })
-}
+
+
 
