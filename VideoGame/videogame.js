@@ -18,7 +18,7 @@ class Road {
     this.width = $canvas.width;
     this.height = $canvas.height;
     this.img = new Image();
-    this.img.src = "../recursos/carretera.png";
+    this.img.src = "../recursos/carreteraconarbolesyhospital.png";
   }
   //Método
   draw() {
