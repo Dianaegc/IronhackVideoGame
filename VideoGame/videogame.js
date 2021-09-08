@@ -9,6 +9,7 @@ const covids2 = [];
 let score = 0;
 let score2 = 0;
 
+
 //Class Background
 class Road {
   constructor() {
@@ -38,6 +39,8 @@ class Avatar {
     this.img = new Image();
     this.img.src = imagenes;
     this.puntaje=0;
+    this.xInicial=x;
+    this.yInicial=y;
   }
   //metodo de avatar
   draw() {
@@ -69,9 +72,19 @@ class Avatar {
   bottom() {
     return this.y + this.height;
   }
+  crashWith(obstacle){
+    return !(this.bottom() < obstacle.top() || this.top() > obstacle.bottom() || this.rigth() < obstacle.left() || this.left() > obstacle.rigth());
+
+  }
+resetToInitialPosition(){
+  this.x=this.xInicial;
+  this.y=this.yInicial;
+  this.draw();
 }
 
-//Class Covid
+}
+
+//Class Covidw
 class Covid {
   constructor(x, y) {
     this.width = 45;
@@ -89,7 +102,7 @@ class Covid {
   left() {
     return this.x;
   }
-  right() {
+  rigth() {
     return this.x + this.width;
   }
   top() {
@@ -98,9 +111,7 @@ class Covid {
   bottom() {
     return this.y + this.height;
   }
-  crashWith(obstacle) {
-    return !(this.bottom() < obstacle.top() || this.top() > obstacle.bottom() || this.right() < obstacle.left() || this.left() > obstacle.right());
-  }
+  
 }
 
 //Instancias
@@ -168,9 +179,10 @@ function updateGame() {
   avatar2.draw();
   covid.draw();
   updateCovids();
-
+checarChoques();
   drawScore();
   drawScore2();
+  
 }
 function startGame() {
   gameInterval = setInterval(updateGame, 1000 / 60);
@@ -185,10 +197,9 @@ function updateCovids() {
     covids[i].draw();
     covids2[i].x++;
     covids2[i].draw();
-
   }
   frames += 1;
-  if (frames % 50 === 0) {
+  if (frames % 90=== 0) {
     let x = Math.floor(Math.random() * ($canvas.width + 1));
     let y = Math.floor(Math.random() * ($canvas.height + 1));
     covids.push(new Covid(800, y));
@@ -208,6 +219,22 @@ function drawScore2() {
   ctx.fillText("Dose: " + score2,$canvas.width*.90, 20);
 }
 
+function checarChoques(){
+  for(let i=0;i< covids.length;i++){// itera por los dos arrays ya que ambos tienen las misma longuitud 
+    
+    avatar2.crashWith(covids[i])
+    avatar2.crashWith(covids2[i])
+    if(avatar1.crashWith(covids[i])||avatar1.crashWith(covids2[i])){
+      console.log(`${avatar1}choco`)
+       avatar1.resetToInitialPosition();
+    }
+    if(avatar2.crashWith(covids[i])||avatar2.crashWith(covids[i])){
+      console.log(`${avatar2}choque`)
+      avatar2.resetToInitialPosition();
+  }
+}
 
 
 
+
+}
