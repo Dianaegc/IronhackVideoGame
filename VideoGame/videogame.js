@@ -6,8 +6,9 @@ $canvas.height = window.innerHeight;
 let frames = 0;
 const covids = [];
 const covids2 = [];
-let score = 0;
-let score2 = 0;
+let score = 0 ;
+let score2 = 0 ;
+let hospital=$canvas.height*.10; // un promedio de donde esta nuestro hospital ubicado en nuestro canvas .height
 
 
 //Class Background
@@ -39,8 +40,8 @@ class Avatar {
     this.img = new Image();
     this.img.src = imagenes;
     this.puntaje=0;
-    this.xInicial=x;
-    this.yInicial=y;
+    this.xInicial=x;// para que regrese a la posicion original
+    this.yInicial=y;//para que regrese a la posicion original
   }
   //metodo de avatar
   draw() {
@@ -72,19 +73,18 @@ class Avatar {
   bottom() {
     return this.y + this.height;
   }
-  crashWith(obstacle){
+  crashWith(obstacle){// revisa si choca contra algun objeto 
     return !(this.bottom() < obstacle.top() || this.top() > obstacle.bottom() || this.rigth() < obstacle.left() || this.left() > obstacle.rigth());
 
   }
 resetToInitialPosition(){
   this.x=this.xInicial;
   this.y=this.yInicial;
-  this.draw();
 }
 
 }
 
-//Class Covidw
+//Class Covid
 class Covid {
   constructor(x, y) {
     this.width = 45;
@@ -110,8 +110,7 @@ class Covid {
   }
   bottom() {
     return this.y + this.height;
-  }
-  
+  }  
 }
 
 //Instancias
@@ -179,9 +178,11 @@ function updateGame() {
   avatar2.draw();
   covid.draw();
   updateCovids();
-checarChoques();
+  checarChoques()//mando llamar la funcion 
   drawScore();
   drawScore2();
+  checarLlegadaHospital();
+  sumarpuntosscore();
   
 }
 function startGame() {
@@ -199,12 +200,13 @@ function updateCovids() {
     covids2[i].draw();
   }
   frames += 1;
-  if (frames % 90=== 0) {
+  if (frames % 150=== 0) {
     let x = Math.floor(Math.random() * ($canvas.width + 1));
     let y = Math.floor(Math.random() * ($canvas.height + 1));
     covids.push(new Covid(800, y));
     covids2.push(new Covid(0, y));
   }
+
   
 }
 //score -dose
@@ -219,7 +221,7 @@ function drawScore2() {
   ctx.fillText("Dose: " + score2,$canvas.width*.90, 20);
 }
 
-function checarChoques(){
+function checarChoques(){ //funcion para que cheque cuando chocan los avatars con los covids de ambos lados 
   for(let i=0;i< covids.length;i++){// itera por los dos arrays ya que ambos tienen las misma longuitud 
     
     avatar2.crashWith(covids[i])
@@ -233,8 +235,24 @@ function checarChoques(){
       avatar2.resetToInitialPosition();
   }
 }
-
-
-
+}
+function checarLlegadaHospital(){//cuando el avatar llegue al hospital lo regrese a su posicion
+  
+  if(avatar1.y<=hospital){
+    avatar1.y=avatar1.yInicial
+  }
+  if(avatar2.y<=hospital){
+    avatar2.y=avatar2.yInicial
+  }
 
 }
+
+function sumarpuntosscore(){
+if(avatar1.y<= hospital){
+  score++
+};
+if(avatar1.y<= hospital){
+  score2++
+};
+}
+
