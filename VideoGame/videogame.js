@@ -6,8 +6,6 @@ $canvas.height = window.innerHeight;
 let frames = 0;
 const covids = [];
 const covids2 = [];
-let score = 0 ;
-let score2 = 0 ;
 let hospital=$canvas.height*.10; // un promedio de donde esta nuestro hospital ubicado en nuestro canvas .height
 
 
@@ -42,6 +40,7 @@ class Avatar {
     this.puntaje=0;
     this.xInicial=x;// para que regrese a la posicion original
     this.yInicial=y;//para que regrese a la posicion original
+    this.dose=0;
   }
   //metodo de avatar
   draw() {
@@ -179,11 +178,10 @@ function updateGame() {
   covid.draw();
   updateCovids();
   checarChoques()//mando llamar la funcion 
-  drawScore();
-  drawScore2();
+  drawDose();
+  sumarpuntosdose();
   checarLlegadaHospital();
-  sumarpuntosscore();
-  
+  winner();
 }
 function startGame() {
   gameInterval = setInterval(updateGame, 1000 / 60);
@@ -210,16 +208,16 @@ function updateCovids() {
   
 }
 //score -dose
-function drawScore() {
+function drawDose() {
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
-  ctx.fillText("Dose: " + score, 10, 20);
-}
-function drawScore2() {
+  ctx.fillText("Dose: " + avatar1.dose, 10, 20);
+
   ctx.font = "15px Century Gothic";
   ctx.fillStyle = "white";
-  ctx.fillText("Dose: " + score2,$canvas.width*.90, 20);
+  ctx.fillText("Dose: " + avatar2.dose,$canvas.width*.90, 20);
 }
+
 
 function checarChoques(){ //funcion para que cheque cuando chocan los avatars con los covids de ambos lados 
   for(let i=0;i< covids.length;i++){// itera por los dos arrays ya que ambos tienen las misma longuitud 
@@ -240,19 +238,21 @@ function checarLlegadaHospital(){//cuando el avatar llegue al hospital lo regres
   
   if(avatar1.y<=hospital){
     avatar1.y=avatar1.yInicial
+  console.log(dose)
   }
   if(avatar2.y<=hospital){
     avatar2.y=avatar2.yInicial
   }
 
 }
+function sumarpuntosdose(){// ir sumando puntos en dose
+  if(avatar1.y <= hospital){
+    avatar1.dose++
+  }
+  if(avatar2.y <= hospital){
+    avatar2.dose++
+  }
+};
 
-function sumarpuntosscore(){
-if(avatar1.y<= hospital){
-  score++
-};
-if(avatar1.y<= hospital){
-  score2++
-};
-}
+
 

@@ -3,8 +3,9 @@
 }
   
   body{
-    background:url(./recursos/Pandemic.jpg);
+    background:url(./recursos/Pantalla\ .png);
     background-size: cover;
+
   }
 
   .btn{
@@ -18,7 +19,7 @@
     border-radius:100px;
     color:black;
     cursor:pointer;
-    margin: 200px auto;
+    margin: 150px auto;
     text-align:center;
     text-transform:inherit;
     font-family: Georgia, Times, Times New Roman, serif;
@@ -59,7 +60,7 @@ a{
 
  }
  
- #audio-music{
-  width: 10%;
-  height:15px;
- }
+.close-imgage {
+  
+}
+
