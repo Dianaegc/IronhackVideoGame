@@ -199,7 +199,7 @@ function updateCovids() {
     covids2[i].draw();
   }
   frames += 1;
-  if (frames % 150=== 0) {
+  if (frames % 100=== 0) {
     let x = Math.floor(Math.random() * ($canvas.width + 1));
     let y = Math.floor(Math.random() * ($canvas.height + 1));
     covids.push(new Covid(800, y));
