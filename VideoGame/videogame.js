@@ -181,7 +181,8 @@ function updateGame() {
   drawDose();
   sumarpuntosdose();
   checarLlegadaHospital();
-  winner();
+  winOrLose();
+  winOrLose2();
 }
 function startGame() {
   gameInterval = setInterval(updateGame, 1000 / 60);
@@ -254,5 +255,36 @@ function sumarpuntosdose(){// ir sumando puntos en dose
   }
 };
 
+function winOrLose(){
+  console.log(avatar1.dose)
+  if(avatar1.dose==1){
+    const img=new Image();
+    img.src='../recursos/youwin-export.png'
+    x = $canvas.width * .15;
+    y = $canvas.width * .10;
+   width = 300;
+  height = 300;
+    ctx.drawImage(img,x,y,width,height);
+    const img2=new Image();
+    img2.src='../recursos/pantalla de muerte-export.png'
+    x=$canvas.width*.40;
+    ctx.drawImage(img2,x,y,width,height)
+  }
+}
 
+function winOrLose2(){
+  if(avatar2.dose===1){
+    const img3=new Image();
+    img3.src='../recursos/pantalla de muerte-export.png'
+    x = $canvas.width * .15;
+    y = $canvas.width * .10;
+   width = 300;
+  height = 300;
+    ctx.drawImage(img3,x,y,width,height);
+    const img4=new Image();
+    img4.src='../recursos/youwin-export.png'
+    x=$canvas.width*.40;
+    ctx.drawImage(img4,x,y,width,height)
+  }
+}
 

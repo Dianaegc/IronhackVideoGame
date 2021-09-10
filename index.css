@@ -3,7 +3,7 @@
 }
   
   body{
-    background:url(./recursos/Pantalla\ .png);
+    background:url(./recursos/nueo\ fondo.gif);
     background-size: cover;
 
   }
@@ -65,8 +65,9 @@ a{
   top:50%;
   left:50%;
   transform:translate(-50%, -50%);
-  padding:1px;
   border-radius: 100%;
+  border-color: transparent transparent;
+  
   
 }
 
