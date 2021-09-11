@@ -257,7 +257,7 @@ function sumarpuntosdose(){// ir sumando puntos en dose
 
 function winOrLose(){
   console.log(avatar1.dose)
-  if(avatar1.dose==1){
+  if(avatar1.dose==3){
     const img=new Image();
     img.src='../recursos/youwin-export.png'
     x = $canvas.width * .15;
@@ -273,7 +273,7 @@ function winOrLose(){
 }
 
 function winOrLose2(){
-  if(avatar2.dose===1){
+  if(avatar2.dose===3){
     const img3=new Image();
     img3.src='../recursos/pantalla de muerte-export.png'
     x = $canvas.width * .15;
